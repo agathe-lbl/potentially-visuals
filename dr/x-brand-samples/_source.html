@@ -1,0 +1,72 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1080px;background:#000;color:#fff;font-family:'Satoshi',-apple-system,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .card{position:relative;width:1080px;height:1080px;padding:84px 92px 72px;display:flex;flex-direction:column}
+  .frame{position:absolute;inset:42px;border:1px solid #1e1e1e;border-radius:12px;pointer-events:none}
+  .top{display:flex;justify-content:space-between;align-items:center;z-index:1}
+  .kicker{font-size:20px;letter-spacing:.40em;text-transform:uppercase;color:#808080;font-weight:500}
+  .hero{flex:1;display:flex;align-items:center;justify-content:center;z-index:1}
+  .headwrap{z-index:1}
+  .rule{width:62px;height:4px;background:#F20A5E;border-radius:2px;margin-bottom:26px}
+  .cap{font-weight:900;font-size:52px;line-height:1.08;letter-spacing:-.022em;max-width:900px}
+  .cap .pk{color:#F20A5E}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:26px;border-top:1px solid #232323;z-index:1}
+  .wm{display:flex;align-items:center;gap:14px;font-weight:700;font-size:23px;color:#fff}
+  .url{font-size:17px;letter-spacing:.05em;color:#6a6a6a;font-weight:500}
+  /* S1 graph */
+  .big{font-weight:900;font-size:150px;letter-spacing:-.04em;color:#fff;line-height:1}
+  .sub{font-size:24px;letter-spacing:.06em;color:#9a9a9a;text-transform:uppercase;font-weight:500;margin-top:10px}
+  /* S3 steps */
+  .steps{display:flex;flex-direction:column;gap:20px;width:100%}
+  .step{display:flex;align-items:center;gap:26px}
+  .num{flex:0 0 auto;width:58px;height:58px;border-radius:50%;border:3px solid #F20A5E;color:#F20A5E;font-weight:900;font-size:26px;display:flex;align-items:center;justify-content:center}
+  .stxt{font-weight:700;font-size:34px;letter-spacing:-.01em}
+  .hidden{display:none}
+</style></head>
+<body><div class="card">
+  <div class="frame"></div>
+  <div class="top"><div class="kicker" id="kick"></div>
+    <svg width="28" height="28" viewBox="-34 -34 68 68"><path fill="#F20A5E" d="M0 -30 l8 19 21 2 -16 14 5 21 -18 -11 -18 11 5 -21 -16 -14 21 -2z"/></svg>
+  </div>
+  <div class="hero" id="hero"></div>
+  <div class="headwrap"><div class="rule"></div><div class="cap" id="cap"></div></div>
+  <div class="foot"><div class="wm"><svg width="21" height="21" viewBox="-34 -34 68 68"><path fill="#F20A5E" d="M0 -30 l8 19 21 2 -16 14 5 21 -18 -11 -18 11 5 -21 -16 -14 21 -2z"/></svg>potentially</div><div class="url">madeonpotentially.com</div></div>
+</div>
+<script>
+const c=new URLSearchParams(location.search).get('c')||'s1';
+const K=document.getElementById('kick'),H=document.getElementById('hero'),C=document.getElementById('cap');
+if(c==='s1'){
+  K.textContent='DATA  ·  INFRA THESIS';
+  H.innerHTML=`<svg width="820" height="360" viewBox="0 0 820 360">
+    <line x1="40" y1="320" x2="800" y2="320" stroke="#2a2a2a" stroke-width="2"/>
+    <path d="M50 312 C 300 308, 470 300, 600 215 S 740 70, 770 44" fill="none" stroke="#F20A5E" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="770" cy="44" r="13" fill="#F20A5E"/>
+    <text x="58" y="300" fill="#7a7a7a" font-family="Satoshi" font-weight="700" font-size="26">9.7T</text>
+    <text x="690" y="36" fill="#fff" font-family="Satoshi" font-weight="900" font-size="30">3.2Q</text>
+    <text x="58" y="352" fill="#5a5a5a" font-family="Satoshi" font-weight="500" font-size="20" letter-spacing="2">TOKENS / MONTH  ·  TWO YEARS</text>
+  </svg>`;
+  C.innerHTML='Tokens are exploding. The interesting part is the <span class="pk">layer being built on top.</span>';
+}else if(c==='s2'){
+  K.textContent='THESIS SEED';
+  H.innerHTML=`<svg width="360" height="300" viewBox="0 0 360 300">
+    <rect x="60" y="40" width="240" height="70" rx="12" fill="none" stroke="#F20A5E" stroke-width="4"/>
+    <text x="180" y="84" text-anchor="middle" fill="#F20A5E" font-family="Satoshi" font-weight="900" font-size="26">THE LAYER</text>
+    <rect x="40" y="180" width="280" height="64" rx="12" fill="none" stroke="#3a3a3a" stroke-width="4"/>
+    <text x="180" y="219" text-anchor="middle" fill="#6f6f6f" font-family="Satoshi" font-weight="700" font-size="22">THE MODELS</text>
+  </svg>`;
+  C.innerHTML='Models laid the foundation. The layer where people <span class="pk">create, protect, and earn</span> from AI is yet to be built.';
+}else if(c==='s3'){
+  K.textContent='PLAYBOOK  ·  5 STEPS';
+  H.innerHTML=`<div class="steps">
+    <div class="step"><div class="num">1</div><div class="stxt">Map the bespoke work</div></div>
+    <div class="step"><div class="num">2</div><div class="stxt">Find the reusable patterns</div></div>
+    <div class="step"><div class="num">3</div><div class="stxt">Build the orchestration layer</div></div>
+    <div class="step"><div class="num">4</div><div class="stxt">Move pricing to usage</div></div>
+    <div class="step"><div class="num">5</div><div class="stxt">Compound across clients</div></div>
+  </div>`;
+  C.innerHTML='From project revenue to <span class="pk">platform revenue.</span>';
+}
+</script>
+</body></html>
