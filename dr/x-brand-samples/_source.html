@@ -38,16 +38,32 @@
 const c=new URLSearchParams(location.search).get('c')||'s1';
 const K=document.getElementById('kick'),H=document.getElementById('hero'),C=document.getElementById('cap');
 if(c==='s1'){
+  const kf=parseInt(new URLSearchParams(location.search).get('kf')||'9',10);
   K.textContent='DATA  ·  INFRA THESIS';
   H.innerHTML=`<svg width="820" height="360" viewBox="0 0 820 360">
     <line x1="40" y1="320" x2="800" y2="320" stroke="#2a2a2a" stroke-width="2"/>
-    <path d="M50 312 C 300 308, 470 300, 600 215 S 740 70, 770 44" fill="none" stroke="#F20A5E" stroke-width="7" stroke-linecap="round"/>
-    <circle cx="770" cy="44" r="13" fill="#F20A5E"/>
+    <path id="curve" pathLength="100" d="M50 312 C 300 308, 470 300, 600 215 S 740 70, 770 44" fill="none" stroke="#F20A5E" stroke-width="7" stroke-linecap="round"/>
+    <circle id="enddot" cx="770" cy="44" r="13" fill="#F20A5E"/>
     <text x="58" y="300" fill="#7a7a7a" font-family="Satoshi" font-weight="700" font-size="26">9.7T</text>
-    <text x="690" y="36" fill="#fff" font-family="Satoshi" font-weight="900" font-size="30">3.2Q</text>
+    <text id="endlab" x="690" y="36" fill="#fff" font-family="Satoshi" font-weight="900" font-size="30">3.2Q</text>
     <text x="58" y="352" fill="#5a5a5a" font-family="Satoshi" font-weight="500" font-size="20" letter-spacing="2">TOKENS / MONTH  ·  TWO YEARS</text>
   </svg>`;
   C.innerHTML='Tokens are exploding. The interesting part is the <span class="pk">layer being built on top.</span>';
+  if(kf<9){
+    const prog=[0,0.55,1,1][kf-1]||0;
+    const cv=document.getElementById('curve');cv.style.strokeDasharray='100';cv.style.strokeDashoffset=String(100*(1-prog));
+    const end=kf>=3?'1':'0';document.getElementById('enddot').style.opacity=end;document.getElementById('endlab').style.opacity=end;
+    const cap=kf>=4?'1':'0';C.style.opacity=cap;document.querySelector('.rule').style.opacity=cap;
+  }
+}else if(c==='s3t'){
+  const step=parseInt(new URLSearchParams(location.search).get('step')||'1',10);
+  const steps=['Map the bespoke work','Find the reusable patterns','Build the orchestration layer','Move pricing to usage','Compound across clients'];
+  K.textContent='PLAYBOOK  ·  '+step+' / 5';
+  H.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;gap:34px">
+     <div style="width:128px;height:128px;border-radius:50%;border:5px solid #F20A5E;color:#F20A5E;font-weight:900;font-size:60px;display:flex;align-items:center;justify-content:center">${step}</div>
+     <div style="font-weight:900;font-size:58px;letter-spacing:-.022em;max-width:780px;text-align:center;line-height:1.08">${steps[step-1]}</div>
+   </div>`;
+  C.innerHTML='From project revenue to <span class="pk">platform revenue.</span>';
 }else if(c==='s2'){
   K.textContent='THESIS SEED';
   H.innerHTML=`<svg width="360" height="300" viewBox="0 0 360 300">
