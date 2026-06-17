@@ -1,0 +1,93 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1080px;height:1350px;background:#000;color:#fff;font-family:'Satoshi',-apple-system,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .card{position:relative;width:1080px;height:1350px;padding:92px 100px 84px;display:flex;flex-direction:column}
+  .frame{position:absolute;inset:46px;border:1px solid #1e1e1e;border-radius:12px;pointer-events:none}
+  .top{display:flex;justify-content:space-between;align-items:center;z-index:1}
+  .kicker{font-size:21px;letter-spacing:.42em;text-transform:uppercase;color:#808080;font-weight:500}
+  .hero{flex:1;display:flex;align-items:center;justify-content:center;z-index:1;padding:24px 0}
+  .headwrap{z-index:1;min-height:230px}
+  .rule{width:66px;height:4px;background:#F20A5E;border-radius:2px;margin-bottom:30px}
+  .cap{font-weight:900;font-size:64px;line-height:1.04;letter-spacing:-.024em;max-width:860px}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:30px;border-top:1px solid #232323;z-index:1}
+  .wm{display:flex;align-items:center;gap:15px;font-weight:700;font-size:24px;letter-spacing:-.01em;color:#fff}
+  .url{font-size:18px;letter-spacing:.05em;color:#6a6a6a;font-weight:500}
+
+  /* ---- the stack ---- */
+  .stack{display:flex;flex-direction:column;gap:20px;align-items:center;width:100%}
+  .bar{width:792px;height:150px;border-radius:20px;display:flex;align-items:center;justify-content:space-between;
+       padding:0 46px;border:3px solid #3a3a3a;opacity:0;transform:translateY(14px);}
+  .bar.show{opacity:1;transform:none}
+  .blab{font-weight:900;font-size:42px;letter-spacing:-.02em}
+  .bsub{font-size:20px;color:#7c7c7c;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+  .bar.models{border-color:#333;color:#7c7c7c}
+  .bar.models .blab{color:#7c7c7c}
+  .bar.mid{border-color:#fff;color:#fff}
+  .bar.top{border-color:#F20A5E}
+  .bar.top.glow{background:rgba(242,10,94,.10);box-shadow:0 0 80px -12px rgba(242,10,94,.65)}
+  .seg{font-weight:900;font-size:38px;letter-spacing:-.02em;color:#5a5a5a;transition:none}
+  .seg.on{color:#F20A5E}
+  .dot{color:#3a3a3a;font-weight:900;font-size:38px;margin:0 14px}
+  .star{flex:0 0 auto}
+  /* arrows (slide 3) */
+  .arrows{display:flex;gap:46px;justify-content:center;margin-bottom:6px;height:54px;align-items:flex-end}
+  .arrows span{color:#F20A5E;font-size:46px;font-weight:900;line-height:1;opacity:0}
+  .arrows.show span{opacity:1}
+  .baseline{width:792px;height:0;border-top:2px dashed #2a2a2a;opacity:0}
+  .baseline.show{opacity:1}
+  .slot{height:150px;display:flex;align-items:center;justify-content:center;width:100%}
+</style></head>
+<body><div class="card">
+  <div class="frame"></div>
+  <div class="top">
+    <div class="kicker" id="kick"></div>
+    <svg class="star" width="30" height="30" viewBox="-34 -34 68 68"><path fill="#F20A5E" d="M0 -30 l8 19 21 2 -16 14 5 21 -18 -11 -18 11 5 -21 -16 -14 21 -2z"/></svg>
+  </div>
+
+  <div class="hero">
+    <div class="stack">
+      <div class="arrows" id="arrows"><span>&#8593;</span><span>&#8593;</span><span>&#8593;</span><span>&#8593;</span><span>&#8593;</span></div>
+      <div class="bar top" id="barTop">
+        <div><span class="seg" id="sCreate">CREATE</span><span class="dot">&middot;</span><span class="seg" id="sProtect">PROTECT</span><span class="dot">&middot;</span><span class="seg" id="sMonet">MONETISE</span></div>
+        <svg width="34" height="34" viewBox="-34 -34 68 68"><path fill="#F20A5E" d="M0 -30 l8 19 21 2 -16 14 5 21 -18 -11 -18 11 5 -21 -16 -14 21 -2z"/></svg>
+      </div>
+      <div class="bar mid" id="barMid"><div class="blab">ORCHESTRATION</div><div class="bsub">your workflows</div></div>
+      <div class="slot"><div class="baseline" id="baseline"></div>
+        <div class="bar models" id="barModels" style="position:absolute"><div class="blab">THE MODELS</div><div class="bsub">infrastructure</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="headwrap">
+    <div class="rule"></div>
+    <div class="cap" id="cap"></div>
+  </div>
+
+  <div class="foot">
+    <div class="wm"><svg width="22" height="22" viewBox="-34 -34 68 68"><path fill="#F20A5E" d="M0 -30 l8 19 21 2 -16 14 5 21 -18 -11 -18 11 5 -21 -16 -14 21 -2z"/></svg>potentially</div>
+    <div class="url">madeonpotentially.com</div>
+  </div>
+</div>
+<script>
+const q=new URLSearchParams(location.search);
+const s=parseInt(q.get('s')||'1',10);
+const S={
+ 1:{k:'INFRA THESIS  ·  01 / 08', c:'One day soon, every model will be interchangeable.', show:['baseline']},
+ 2:{k:'INFRA THESIS  ·  02 / 08', c:'The models are becoming infrastructure. Like electricity.', show:['models']},
+ 3:{k:'INFRA THESIS  ·  03 / 08', c:'So everyone fights over the same layer.', show:['models','arrows']},
+ 4:{k:'INFRA THESIS  ·  04 / 08', c:'But value does not sit there. It moves up.', show:['models','mid']},
+ 5:{k:'INFRA THESIS  ·  05 / 08', c:'Make what only you can.', show:['models','mid','top'], lit:['sCreate']},
+ 6:{k:'INFRA THESIS  ·  06 / 08', c:'Keep it yours.', show:['models','mid','top'], lit:['sCreate','sProtect']},
+ 7:{k:'INFRA THESIS  ·  07 / 08', c:'Earn from it. Again and again.', show:['models','mid','top'], lit:['sCreate','sProtect','sMonet']},
+ 8:{k:'THE LAYER WORTH OWNING  ·  08 / 08', c:'That is the layer worth owning.', show:['models','mid','top'], lit:['sCreate','sProtect','sMonet'], glow:true},
+}[s];
+document.getElementById('kick').textContent=S.k;
+document.getElementById('cap').textContent=S.c;
+const map={models:'barModels',mid:'barMid',top:'barTop',arrows:'arrows',baseline:'baseline'};
+(S.show||[]).forEach(k=>document.getElementById(map[k]).classList.add('show'));
+(S.lit||[]).forEach(id=>document.getElementById(id).classList.add('on'));
+if(S.glow)document.getElementById('barTop').classList.add('glow');
+</script>
+</body></html>
